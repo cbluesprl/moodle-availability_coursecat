@@ -36,21 +36,26 @@ defined('MOODLE_INTERNAL') || die();
 class frontend extends \core_availability\frontend {
 
     protected function get_javascript_strings() {
-        return ['ajaxerror', 'rootcat'];
+        // these paramaters are used in availability_coursecat.form.initInner in yui/src/form.js as get_string function
+        return ['rootcat'];
     }
 
+    /**
+     * @param \stdClass $course
+     * @param \cm_info|null $cm
+     * @param \section_info|null $section
+     * @return array
+     * @throws \dml_exception
+     */
     protected function get_javascript_init_params($course, \cm_info $cm = null,
             \section_info $section = null) {
 
-        $category = $this->get_root_category($course->category);
-        $defaultcat = get_config('availability_coursecat', 'defaultcat');
-        return [$category->name, $defaultcat];
-    }
+        require_once __DIR__ . '/../lib.php';
 
-    public function get_root_category($categoryid)
-    {
-        $category = \core_course_category::get($categoryid);
-        $root_cat = explode('/', $category->path);
-        return \core_course_category::get($root_cat[1]);
+        $category = availability_course_cat_get_root_category($course->category);
+        $defaultcat = get_config('availability_coursecat', 'defaultcat');
+
+        // these paramaters are used in availability_coursecat.form.initInner in yui/src/form.js
+        return [$category->name, $defaultcat];
     }
 }

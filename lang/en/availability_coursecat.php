@@ -22,12 +22,14 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['actualrootcat'] = 'Actual root category is : "{$a->rootcat}"';
 $string['ajaxerror'] = 'Error when trying to get default category setting';
 $string['allowed'] = 'Allowed';
+$string['allowednot'] = 'Root course category does not contain "{$a->coursecat}"';
 $string['defaultcat'] = 'Default Category';
 $string['defaultcatdesc'] = 'Root category of the course must contain this text';
 $string['description'] = 'Restriction by course category';
 $string['pluginname'] = 'Restriction by course category';
-$string['notallowed'] = 'Not allowed until root course category contains "{$a}"';
+$string['notallowed'] = 'Root course category contains "{$a->coursecat}"';
 $string['title'] = 'Course category';
 $string['rootcat'] = 'Root category of this module';

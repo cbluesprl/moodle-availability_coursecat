@@ -28,7 +28,7 @@ M.availability_coursecat.form.initInner = function(rootcat, defaultcat) {
 M.availability_coursecat.form.getNode = function(json) {
 
     var strings = M.str.availability_coursecat;
-    var html = '<label>' + strings.title + ' <input type="text" name="coursecat" placeholder="' + this.defaultcat +'"></label>' +
+    var html = '<label>' + strings.title + ' <input type="text" name="coursecat" placeholder="' + this.defaultcat + '"></label>' +
         '<div class="alert alert-info">' + M.util.get_string('rootcat', 'availability_coursecat') + ' : ' + this.rootcat + '</div>';
     var node = Y.Node.create('<span>' + html + '</span>');
 

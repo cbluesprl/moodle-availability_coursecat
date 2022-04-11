@@ -6,9 +6,19 @@
  * @copyright:   CBlue SPRL, 2022
  */
 
-function availability_course_cat_get_root_category($categoryid)
+/**
+ * @param int $categoryid
+ * @return core_course_category|false|null
+ * @throws moodle_exception
+ */
+function availability_course_cat_get_root_category(int $categoryid)
 {
     $category = \core_course_category::get($categoryid);
-    $root_cat = explode('/', $category->path);
-    return \core_course_category::get($root_cat[1]);
+    if (!empty($category)) {
+        $root_cat = explode('/', $category->path);
+        if (!empty($root_cat[1])) {
+            $category = \core_course_category::get($root_cat[1]);
+        }
+    }
+    return $category;
 }

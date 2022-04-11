@@ -22,12 +22,14 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+$string['actualrootcat'] = 'La catégorie racine actuelle est : "{$a->rootcat}';
 $string['ajaxerror'] = 'Erreur lors de la tentative de récupération de la catégorie par défaut';
 $string['allowed'] = 'Autorisé';
+$string['allowednot'] = 'La catégorie racine du cours ne contient pas "{$a->coursecat}"';
 $string['defaultcat'] = 'Catégorie par défaut';
 $string['defaultcatdesc'] = 'La catégorie racine du cours doit contenir ce texte';
 $string['description'] = 'Restriction par catégorie de cours';
 $string['pluginname'] = 'Restriction par catégorie de cours';
-$string['notallowed'] = 'Non autorisé sauf si la catégorie racine du cours contient "{$a}"';
+$string['notallowed'] = 'La catégorie racine du cours contient "{$a->coursecat}"';
 $string['title'] = 'Catégorie de cours';
 $string['rootcat'] = 'Catégorie racine de cette activité';
