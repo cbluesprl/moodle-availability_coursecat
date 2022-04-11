@@ -17,20 +17,21 @@ M.availability_coursecat.form = Y.Object(M.core_availability.plugin);
  * Initialises this plugin.
  *
  * @method initInner
- * @param {String} coursecat HTML to use for date fields
+ * @param {String} rootcat Root Category of this course module
+ * @param {String} defaultcat Default Category from Availability Coursecat plugin settings
  */
-M.availability_coursecat.form.initInner = function(coursecat) {
-    console.log('The param was: ' + coursecat);
-    this.html = coursecat;
+M.availability_coursecat.form.initInner = function(rootcat, defaultcat) {
+    this.rootcat = rootcat;
+    this.defaultcat = defaultcat;
 };
 
 M.availability_coursecat.form.getNode = function(json) {
 
     var strings = M.str.availability_coursecat;
-    var html = '<label>' + strings.title + ' <input type="text" name="coursecat" placeholder="Catalogue"></label>';
+    var html = '<label>' + strings.title + ' <input type="text" name="coursecat" placeholder="' + this.defaultcat +'"></label>' +
+        '<div class="alert alert-info">' + M.util.get_string('rootcat', 'availability_coursecat') + ' : ' + this.rootcat + '</div>';
     var node = Y.Node.create('<span>' + html + '</span>');
 
-    console.log(json.coursecat);
     if (json.coursecat !== undefined) {
         node.one('input[name=coursecat]').set('value', json.coursecat);
     }
@@ -40,7 +41,6 @@ M.availability_coursecat.form.getNode = function(json) {
         M.availability_coursecat.form.addedEvents = true;
         var root = Y.one('.availability-field');
         root.delegate('valuechange', function() {
-            console.log('toto');
             // Whichever dropdown changed, just update the form.
             M.core_availability.form.update();
         }, '.availability_coursecat input');
@@ -50,9 +50,6 @@ M.availability_coursecat.form.getNode = function(json) {
 };
 
 M.availability_coursecat.form.fillValue = function(value, node) {
-    console.log('fill');
-    console.log(value);
-    console.log(node);
     value.coursecat = node.one('input[name=coursecat]').get('value');
 };
 

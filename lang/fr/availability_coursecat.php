@@ -22,12 +22,12 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['ajaxerror'] = 'Error when trying to get default category setting';
-$string['allowed'] = 'Allowed';
-$string['defaultcat'] = 'Default Category';
-$string['defaultcatdesc'] = 'Root category of the course must contain this text';
-$string['description'] = 'Restriction by course category';
-$string['pluginname'] = 'Restriction by course category';
-$string['notallowed'] = 'Not allowed until root course category contains "{$a}"';
-$string['title'] = 'Course category';
-$string['rootcat'] = 'Root category of this module';
+$string['ajaxerror'] = 'Erreur lors de la tentative de récupération de la catégorie par défaut';
+$string['allowed'] = 'Autorisé';
+$string['defaultcat'] = 'Catégorie par défaut';
+$string['defaultcatdesc'] = 'La catégorie racine du cours doit contenir ce texte';
+$string['description'] = 'Restriction par catégorie de cours';
+$string['pluginname'] = 'Restriction par catégorie de cours';
+$string['notallowed'] = 'Non autorisé sauf si la catégorie racine du cours contient "{$a}"';
+$string['title'] = 'Catégorie de cours';
+$string['rootcat'] = 'Catégorie racine de cette activité';

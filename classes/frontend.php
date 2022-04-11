@@ -36,14 +36,15 @@ defined('MOODLE_INTERNAL') || die();
 class frontend extends \core_availability\frontend {
 
     protected function get_javascript_strings() {
-        return array();
+        return ['ajaxerror', 'rootcat'];
     }
 
     protected function get_javascript_init_params($course, \cm_info $cm = null,
             \section_info $section = null) {
 
         $category = $this->get_root_category($course->category);
-        return [$category->name];
+        $defaultcat = get_config('availability_coursecat', 'defaultcat');
+        return [$category->name, $defaultcat];
     }
 
     public function get_root_category($categoryid)
