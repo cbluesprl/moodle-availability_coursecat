@@ -47,13 +47,21 @@ class condition extends \core_availability\condition {
      */
     public function __construct($structure) {
 
-        if (empty($structure->coursecat)) {
+        if (!property_exists($structure, 'coursecat')) {
+            $this->coursecat = '';
+        } elseif (!empty($structure->coursecat)) {
+            $this->coursecat = $structure->coursecat;
+        } else {
             throw new \coding_exception('Missing or invalid course category');
         }
     }
 
     public function save() {
-        return (object)array('type' => 'text', 'coursecat' => $this->coursecat, 'allow' => $this->allow);
+        $result = (object)array('type' => 'coursecat', 'coursecat' => $this->coursecat);
+        if ($this->coursecat) {
+            $result->coursecat = $this->coursecat;
+        }
+        return $result;
     }
 
     public function is_available($not, \core_availability\info $info, $grabthelot, $userid) {
@@ -75,7 +83,7 @@ class condition extends \core_availability\condition {
 
     public function get_description($full, $not, \core_availability\info $info) {
         $allow = $not ? !$this->allow : $this->allow;
-        return $allow ? 'Allowed' : 'Not allowed';
+        return $allow ? 'Allowed' : 'Not allowed until root course category contains ' . $this->coursecat;
     }
 
     protected function get_debug_string() {
