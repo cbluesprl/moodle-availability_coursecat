@@ -25,5 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->version = 2022040700;
-$plugin->requires = 2021051700;
+$plugin->requires = 2021051700;                 // Moodle 3.11+
 $plugin->component = 'availability_coursecat';
+$plugin->maturity = MATURITY_STABLE;
+$plugin->release = '1.0 (Build: 2022040700)';
