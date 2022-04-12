@@ -52,10 +52,6 @@ class condition extends \core_availability\condition {
 
         require_once __DIR__ . '/../lib.php';
 
-        global $COURSE;
-
-        $this->rootcat = availability_course_cat_get_root_category($COURSE->category);
-
         // empty condition will always use plugin setting if exists
         $defaultcat = get_config('availability_coursecat', 'defaultcat');
         if (!empty($structure->coursecat)) {
@@ -90,14 +86,17 @@ class condition extends \core_availability\condition {
 
         $tree = $info->get_availability_tree();
         $conditions = $tree->get_all_children('availability_coursecat\condition');
+        $this->rootcat = availability_course_cat_get_root_category($info->get_course()->category);
 
-        if (stripos($this->rootcat->name, $conditions[0]->coursecat) !== false && !$not) {
+        if (stripos($this->rootcat->name, $conditions[0]->coursecat) !== false) {
             $this->allow = true;
-            return true;
         } else {
             $this->allow = false;
-            return false;
         }
+        if ($not) {
+            $this->allow = !$this->allow;
+        }
+        return $this->allow;
     }
 
     /**
