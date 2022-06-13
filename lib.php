@@ -13,11 +13,11 @@
  */
 function availability_course_cat_get_root_category(int $categoryid)
 {
-    $category = \core_course_category::get($categoryid);
+    $category = \core_course_category::get($categoryid, MUST_EXIST, true);
     if (!empty($category)) {
         $root_cat = explode('/', $category->path);
         if (!empty($root_cat[1])) {
-            $category = \core_course_category::get($root_cat[1]);
+            $category = \core_course_category::get($root_cat[1], MUST_EXIST, true);
         }
     }
     return $category;
