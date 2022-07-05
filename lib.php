@@ -1,9 +1,8 @@
 <?php
 /**
- * This script is owned by CBlue SPRL, please contact CBlue regarding any licences issues.
- *
- * @author:      jeanfrancois@cblue.be
- * @copyright:   CBlue SPRL, 2022
+ * @package availability_coursecat
+ * @copyright 2022 CBlue
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
